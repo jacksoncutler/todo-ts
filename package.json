@@ -1,0 +1,17 @@
+{
+  "name": "todo-ts",
+  "version": "1.0.0",
+  "description": "Basic Todo app made in TypeScript",
+  "repository": "https://github.com/jacksoncutler/todo-ts.git",
+  "author": "Jackson <jackson.cutler@gmail.com>",
+  "license": "MIT",
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "devDependencies": {
+    "parcel": "^2.12.0",
+    "typescript": "^5.5.3"
+  }
+}
