@@ -18,12 +18,21 @@ const onTodoItemEdit = (event: MouseEvent) => {
   const todoEditBtn = event.target as HTMLButtonElement;
   const todoItem = todoEditBtn.parentElement;
   const todoParagraph = todoItem?.childNodes[1] as HTMLParagraphElement;
-  const todoList = document.querySelector<HTMLUListElement>('#todo-list');
+  const todoList = todoItem?.parentElement;
   if (!todoItem || !todoParagraph.innerHTML || !todoList) return;
 
   const todoForm = createTodoForm(todoParagraph.innerHTML);
   todoList.replaceChild(todoForm, todoItem);
 };
+
+const onTodoItemDelete = (event: MouseEvent) => {
+  const todoEditBtn = event.target as HTMLButtonElement;
+  const todoItem = todoEditBtn.parentElement;
+  const todoList = todoItem?.parentElement;
+  if (!todoItem || !todoList) return;
+
+  todoList.removeChild(todoItem);
+}
 
 // HELPER FUNCTIONS
 
@@ -37,4 +46,4 @@ function renderNewTodoBtn(todoList: HTMLUListElement) {
   }
 }
 
-export { onTodoFormSubmit, onTodoItemEdit };
+export { onTodoFormSubmit, onTodoItemEdit, onTodoItemDelete };
