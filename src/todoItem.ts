@@ -1,3 +1,5 @@
+import { onTodoItemEdit } from './eventListeners';
+
 const createTodoItem = (inputText: string) => {
   const todoItem = document.createElement('div');
   const checkbox = document.createElement('input');
@@ -9,8 +11,9 @@ const createTodoItem = (inputText: string) => {
   checkbox.type = 'checkbox';
   todoText.innerHTML = inputText;
   editButton.innerHTML = 'Edit';
+  editButton.addEventListener('click', onTodoItemEdit);
   deleteButton.innerHTML = 'Delete';
-  
+
   todoItem.appendChild(checkbox);
   todoItem.appendChild(todoText);
   todoItem.appendChild(editButton);
