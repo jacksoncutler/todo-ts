@@ -1,3 +1,5 @@
+import { onTodoFormSubmit } from './eventListeners';
+
 const createTodoForm = () => {
   const todoForm = document.createElement('form');
   const todoInput = document.createElement('input');
@@ -5,6 +7,7 @@ const createTodoForm = () => {
 
   todoForm.id = 'todo-form';
   todoForm.className = 'todo-form';
+  todoForm.addEventListener('submit', onTodoFormSubmit);
   todoInput.id = 'todo-input';
   todoSubmitBtn.type = 'submit';
   todoSubmitBtn.innerHTML = 'Save Task';
