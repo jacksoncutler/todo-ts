@@ -1,5 +1,6 @@
 import createTodoItem from './todoItem';
 import createTodoForm from './todoForm';
+import createNewTodoBtn from './newTodoBtn';
 
 const onTodoFormSubmit = (event: SubmitEvent) => {
   event.preventDefault();
@@ -32,18 +33,29 @@ const onTodoItemDelete = (event: MouseEvent) => {
   if (!todoItem || !todoList) return;
 
   todoList.removeChild(todoItem);
-}
+};
 
-// HELPER FUNCTIONS
+const onNewTodoBtnClick = (event: MouseEvent) => {
+  const newTodoBtn = event.target as HTMLButtonElement;
+  const todoList = document.querySelector<HTMLUListElement>('#todo-list')
+  if (!todoList) return;
+  
+  const todoForm = createTodoForm();
+  todoList.replaceChild(todoForm, newTodoBtn);
+};
+
+// HELPERS
 
 function renderNewTodoBtn(todoList: HTMLUListElement) {
   if (todoList.lastChild?.nodeName !== 'BUTTON') {
-    const newTodoBtn = document.createElement('button');
-    newTodoBtn.id = 'new-todo-btn';
-    newTodoBtn.innerHTML = 'New Task';
-
+    const newTodoBtn = createNewTodoBtn();
     todoList?.appendChild(newTodoBtn);
   }
 }
 
-export { onTodoFormSubmit, onTodoItemEdit, onTodoItemDelete };
+export {
+  onTodoFormSubmit,
+  onTodoItemEdit,
+  onTodoItemDelete,
+  onNewTodoBtnClick,
+};

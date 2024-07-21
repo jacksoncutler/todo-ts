@@ -1,8 +1,8 @@
-import createTodoForm from './todoForm';
+import createNewTodoBtn from './newTodoBtn';
 
 const todoList = document.querySelector<HTMLUListElement>('#todo-list');
 
-const newTodoForm = createTodoForm();
-todoList?.appendChild(newTodoForm);
+const newTodoBtn = createNewTodoBtn();
+todoList?.appendChild(newTodoBtn);
 
 
