@@ -1,4 +1,4 @@
-import createNewTodoBtn from './newTodoBtn';
+import createNewTodoBtn from './scripts/newTodoBtn';
 
 const todoList = document.querySelector<HTMLUListElement>('#todo-list');
 
