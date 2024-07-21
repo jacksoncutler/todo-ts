@@ -24,6 +24,8 @@ const onTodoItemEdit = (event: MouseEvent) => {
 
   const todoForm = createTodoForm(todoParagraph.innerHTML);
   todoList.replaceChild(todoForm, todoItem);
+  const todoInput = todoForm.childNodes[0] as HTMLInputElement;
+  todoInput.focus();
 };
 
 const onTodoItemDelete = (event: MouseEvent) => {
@@ -37,11 +39,13 @@ const onTodoItemDelete = (event: MouseEvent) => {
 
 const onNewTodoBtnClick = (event: MouseEvent) => {
   const newTodoBtn = event.target as HTMLButtonElement;
-  const todoList = document.querySelector<HTMLUListElement>('#todo-list')
+  const todoList = document.querySelector<HTMLUListElement>('#todo-list');
   if (!todoList) return;
-  
+
   const todoForm = createTodoForm();
   todoList.replaceChild(todoForm, newTodoBtn);
+  const todoInput = todoForm.childNodes[0] as HTMLInputElement;
+  todoInput.focus();
 };
 
 // HELPERS
