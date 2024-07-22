@@ -9,7 +9,14 @@ ul {
 }
 
 main {
-  padding: 1rem;
+  padding-block: 2rem;
+  padding-inline: 1.5rem;
+}
+
+@media (min-width: 600px) {
+  main {
+    padding-inline: calc(20% - 3rem);
+  }
 }
 
 .container {
@@ -19,16 +26,22 @@ main {
   gap: 1rem;
 }
 .container > button {
-    width: max-content;
+  width: max-content;
 }
 
 .todo-item,
 .todo-form {
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 0.5rem;
 }
 
+.todo-item > p,
 .todo-form > input {
-  width: clamp(24rem, calc(5rem + 50%), 40rem);
+  width: 100%;
+}
+
+.todo-form > button {
+  flex-shrink: 0;
 }
