@@ -1,5 +1,6 @@
 import createTodoItem from './todoItem';
 import createNewTodoBtn from './newTodoBtn';
+import { saveTodo } from './util/storage';
 
 const createTodoForm = (currentText = '') => {
   const todoForm = document.createElement('form');
@@ -19,9 +20,16 @@ const createTodoForm = (currentText = '') => {
     event.preventDefault();
 
     const todoList = todoForm.parentElement as HTMLUListElement;
-    if (!todoInput.value) return;
+    const text = todoInput.value;
+    if (!text) return;
 
-    const todoItem = createTodoItem(todoInput.value);
+    saveTodo({
+      id: '1',
+      text: text,
+      completed: false,
+    })
+    
+    const todoItem = createTodoItem(text);
     todoList.replaceChild(todoItem, todoForm);
     renderNewTodoBtn(todoList);
   });
@@ -29,7 +37,7 @@ const createTodoForm = (currentText = '') => {
   return todoForm;
 
   // HELPERS
-  
+
   function renderNewTodoBtn(todoList: HTMLUListElement) {
     if (todoList.lastChild?.nodeName !== 'BUTTON') {
       const newTodoBtn = createNewTodoBtn();
