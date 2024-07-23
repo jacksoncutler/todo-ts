@@ -19,30 +19,41 @@ const createTodoForm = (currentText = '') => {
   todoForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    const todoList = todoForm.parentElement as HTMLUListElement;
-    const text = todoInput.value;
-    if (!text) return;
-
-    saveTodo({
-      id: '1',
-      text: text,
-      completed: false,
-    })
-    
-    const todoItem = createTodoItem(text);
-    todoList.replaceChild(todoItem, todoForm);
-    renderNewTodoBtn(todoList);
+    if (!currentText) {
+      newItemEvent(todoForm, todoInput);
+    } else {
+      editItemEvent(todoForm, todoInput);
+    }
   });
 
   return todoForm;
 
   // HELPERS
 
-  function renderNewTodoBtn(todoList: HTMLUListElement) {
-    if (todoList.lastChild?.nodeName !== 'BUTTON') {
-      const newTodoBtn = createNewTodoBtn();
-      todoList?.appendChild(newTodoBtn);
-    }
+  function newItemEvent(
+    todoForm: HTMLFormElement,
+    todoInput: HTMLInputElement
+  ) {
+    const todoList = todoForm.parentElement as HTMLUListElement;
+    const text = todoInput.value;
+    if (!text) return;
+
+    const todoItem = createTodoItem(text);
+    todoList.replaceChild(todoItem, todoForm);
+    const newTodoBtn = createNewTodoBtn();
+    todoList.appendChild(newTodoBtn);
+  }
+
+  function editItemEvent(
+    todoForm: HTMLFormElement,
+    todoInput: HTMLInputElement
+  ) {
+    const todoList = todoForm.parentElement as HTMLUListElement;
+    const text = todoInput.value;
+    if (!text) return;
+
+    const todoItem = createTodoItem(text);
+    todoList.replaceChild(todoItem, todoForm);
   }
 };
 
