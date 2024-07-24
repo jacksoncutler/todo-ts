@@ -21,7 +21,7 @@ function newTodo(todo: Todo) {
 
 function editTodo(id: string, text: string) {
   const todos = loadTodos();
-  const todo = todos.find((todo) => todo.id === id);
+  const todo = loadTodo(id);
   if (!todo) return;
   todo.text = text;
   localStorage.setItem('todos', JSON.stringify(todos));
@@ -29,7 +29,7 @@ function editTodo(id: string, text: string) {
 
 function setCompleted(id: string, completed: boolean) {
   const todos = loadTodos();
-  const todo = todos.find((todo) => todo.id === id);
+  const todo = loadTodo(id);
   if (!todo) return;
   todo.completed = completed;
   localStorage.setItem('todos', JSON.stringify(todos));
