@@ -1,7 +1,7 @@
 import createTodoForm from './todoForm';
-import { deleteTodo } from './util/storage';
+import { loadTodo, setCompleted, deleteTodo } from './util/storage';
 
-const createTodoItem = (id: string, inputText: string) => {
+const createTodoItem = (id: string, text: string) => {
   const todoItem = document.createElement('div');
   const checkbox = document.createElement('input');
   const todoText = document.createElement('p');
@@ -15,9 +15,14 @@ const createTodoItem = (id: string, inputText: string) => {
   todoItem.dataset.id = id;
   todoItem.className = 'todo-item';
   checkbox.type = 'checkbox';
-  todoText.innerHTML = inputText;
+  checkbox.checked = loadTodo(id)?.completed || false;
+  todoText.innerHTML = text;
   editButton.innerHTML = 'Edit';
   deleteButton.innerHTML = 'Delete';
+
+  checkbox.addEventListener('change', () => {
+    setCompleted(id, checkbox.checked);
+  });
 
   editButton.addEventListener('click', () => {
     const todoList = todoItem.parentElement as HTMLUListElement;
