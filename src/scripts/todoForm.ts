@@ -42,7 +42,6 @@ const createTodoForm = (id = '', currentText = '') => {
     const id = uuidv4();
     const todoItem = createTodoItem(id, text);
     todoList.replaceChild(todoItem, todoForm);
-    todoList.appendChild(createNewTodoBtn());
 
     newTodo({
       id: id,

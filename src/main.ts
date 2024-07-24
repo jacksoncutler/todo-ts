@@ -3,6 +3,7 @@ import createNewTodoBtn from './scripts/newTodoBtn';
 import { loadTodos } from './scripts/util/storage';
 
 const todoList = document.querySelector<HTMLUListElement>('#todo-list');
+const newTodo = document.querySelector<HTMLDivElement>('#new-todo');
 
 loadTodos().forEach((todo) => {
   const todoItem = createTodoItem(todo.id, todo.text);
@@ -10,4 +11,4 @@ loadTodos().forEach((todo) => {
 });
 
 const newTodoBtn = createNewTodoBtn();
-todoList?.appendChild(newTodoBtn);
+newTodo?.appendChild(newTodoBtn);
