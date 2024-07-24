@@ -1,6 +1,7 @@
 import createTodoForm from './todoForm';
+import { deleteTodo } from './util/storage';
 
-const createTodoItem = (inputText: string) => {
+const createTodoItem = (id: string, inputText: string) => {
   const todoItem = document.createElement('div');
   const checkbox = document.createElement('input');
   const todoText = document.createElement('p');
@@ -11,6 +12,7 @@ const createTodoItem = (inputText: string) => {
   todoItem.appendChild(editButton);
   todoItem.appendChild(deleteButton);
 
+  todoItem.dataset.id = id;
   todoItem.className = 'todo-item';
   checkbox.type = 'checkbox';
   todoText.innerHTML = inputText;
@@ -19,7 +21,7 @@ const createTodoItem = (inputText: string) => {
 
   editButton.addEventListener('click', () => {
     const todoList = todoItem.parentElement as HTMLUListElement;
-    const todoForm = createTodoForm(todoText.innerHTML);
+    const todoForm = createTodoForm(id, todoText.innerHTML);
     todoList.replaceChild(todoForm, todoItem);
 
     const todoInput = todoForm.childNodes[0] as HTMLInputElement;
@@ -29,6 +31,8 @@ const createTodoItem = (inputText: string) => {
   deleteButton.addEventListener('click', () => {
     const todoList = todoItem.parentElement as HTMLUListElement;
     todoList.removeChild(todoItem);
+
+    deleteTodo(id);
   });
 
   return todoItem;

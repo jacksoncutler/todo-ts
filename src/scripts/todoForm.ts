@@ -1,8 +1,9 @@
+import { v4 as uuidv4 } from 'uuid';
 import createTodoItem from './todoItem';
 import createNewTodoBtn from './newTodoBtn';
-import { saveTodo } from './util/storage';
+import { newTodo, editTodo } from './util/storage';
 
-const createTodoForm = (currentText = '') => {
+const createTodoForm = (id = '', currentText = '') => {
   const todoForm = document.createElement('form');
   const todoInput = document.createElement('input');
   const todoSubmitBtn = document.createElement('button');
@@ -19,10 +20,10 @@ const createTodoForm = (currentText = '') => {
   todoForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    if (!currentText) {
+    if (!id) {
       newItemEvent(todoForm, todoInput);
     } else {
-      editItemEvent(todoForm, todoInput);
+      editItemEvent(id, todoForm, todoInput);
     }
   });
 
@@ -38,13 +39,20 @@ const createTodoForm = (currentText = '') => {
     const text = todoInput.value;
     if (!text) return;
 
-    const todoItem = createTodoItem(text);
+    const id = uuidv4();
+    const todoItem = createTodoItem(id, text);
     todoList.replaceChild(todoItem, todoForm);
-    const newTodoBtn = createNewTodoBtn();
-    todoList.appendChild(newTodoBtn);
+    todoList.appendChild(createNewTodoBtn());
+
+    newTodo({
+      id: id,
+      text: text,
+      completed: false,
+    });
   }
 
   function editItemEvent(
+    id: string,
     todoForm: HTMLFormElement,
     todoInput: HTMLInputElement
   ) {
@@ -52,8 +60,10 @@ const createTodoForm = (currentText = '') => {
     const text = todoInput.value;
     if (!text) return;
 
-    const todoItem = createTodoItem(text);
+    const todoItem = createTodoItem(id, text);
     todoList.replaceChild(todoItem, todoForm);
+
+    editTodo(id, text);
   }
 };
 
