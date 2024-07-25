@@ -21,6 +21,17 @@ const createTodoItem = (id: string, text: string) => {
   deleteButton.innerHTML = 'Delete';
 
   checkbox.addEventListener('change', () => {
+    const todoList = document.querySelector<HTMLUListElement>('#todo-list');
+    const completedList = document.querySelector<HTMLUListElement>('#completed-list');
+
+    if (checkbox.checked) {
+      todoList?.removeChild(todoItem);
+      completedList?.appendChild(todoItem);
+    } else {
+      completedList?.removeChild(todoItem);
+      todoList?.appendChild(todoItem);
+    }
+
     setCompleted(id, checkbox.checked);
   });
 
