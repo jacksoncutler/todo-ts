@@ -22,14 +22,24 @@ const createTodoItem = (id: string, text: string) => {
 
   checkbox.addEventListener('change', () => {
     const todoList = document.querySelector<HTMLUListElement>('#todo-list');
-    const completedList = document.querySelector<HTMLUListElement>('#completed-list');
+    const completedList =
+      document.querySelector<HTMLUListElement>('#completed-list');
+    if (!todoList || !completedList) return;
 
     if (checkbox.checked) {
-      todoList?.removeChild(todoItem);
-      completedList?.appendChild(todoItem);
+      todoList.removeChild(todoItem);
+      completedList.appendChild(todoItem);
+      todoItem.classList.add('fade-start');
+      setTimeout(() => {
+        todoItem.classList.remove('fade-start');
+      }, 5);
     } else {
-      completedList?.removeChild(todoItem);
-      todoList?.appendChild(todoItem);
+      completedList.removeChild(todoItem);
+      todoList.appendChild(todoItem);
+      todoItem.classList.add('fade-start');
+      setTimeout(() => {
+        todoItem.classList.remove('fade-start');
+      }, 5);
     }
 
     setCompleted(id, checkbox.checked);

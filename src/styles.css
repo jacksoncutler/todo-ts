@@ -1,18 +1,15 @@
-body {
+html {
   font-family: sans-serif, serif;
 }
-body,
-p,
-ul {
+
+* {
   margin: 0;
-  padding: 0;
 }
 
 main {
   padding-block: 2rem;
   padding-inline: 1.5rem;
 }
-
 @media (min-width: 600px) {
   main {
     padding-inline: calc(20% - 3rem);
@@ -44,4 +41,12 @@ main {
 
 .todo-form > button {
   flex-shrink: 0;
+}
+
+.todo-item {
+  opacity: 1;
+  transition: opacity 100ms ease-out;
+}
+.todo-item.fade-start {
+  opacity: 0;
 }
