@@ -11,10 +11,13 @@ const createNewTodoBtn = () => {
     const todoForm = createTodoForm();
     if (!todoList) return;
 
+    todoForm.classList.add('hide');
     todoList.appendChild(todoForm);
-
     const todoInput = todoForm.childNodes[0] as HTMLInputElement;
     todoInput.focus();
+    setTimeout(() => {
+      todoForm.classList.remove('hide');
+    }, 0);
   });
 
   return newTodoBtn;

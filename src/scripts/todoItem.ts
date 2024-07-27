@@ -30,17 +30,17 @@ const createTodoItem = (id: string, text: string) => {
     if (checkbox.checked) {
       todoList.removeChild(todoItem);
       completedList.appendChild(todoItem);
-      todoItem.classList.add('fade-start');
+      todoItem.classList.add('hide');
       setTimeout(() => {
-        todoItem.classList.remove('fade-start');
-      }, 5);
+        todoItem.classList.remove('hide');
+      }, 50);
     } else {
       completedList.removeChild(todoItem);
       todoList.appendChild(todoItem);
-      todoItem.classList.add('fade-start');
+      todoItem.classList.add('hide');
       setTimeout(() => {
-        todoItem.classList.remove('fade-start');
-      }, 5);
+        todoItem.classList.remove('hide');
+      }, 0);
     }
 
     setCompleted(id, checkbox.checked);
@@ -57,7 +57,10 @@ const createTodoItem = (id: string, text: string) => {
 
   deleteButton.addEventListener('click', () => {
     const todoList = todoItem.parentElement as HTMLUListElement;
-    todoList.removeChild(todoItem);
+    todoItem.classList.add('hide');
+    setTimeout(() => {
+      todoList.removeChild(todoItem);
+    }, 250);
 
     deleteTodo(id);
   });

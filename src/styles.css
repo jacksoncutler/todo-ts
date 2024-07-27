@@ -59,6 +59,12 @@ main {
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem;
+  opacity: 1;
+  transition: opacity 200ms ease-out;
+}
+
+.list-item.hide {
+  opacity: 0;
 }
 
 .todo-item,
@@ -73,15 +79,6 @@ main {
 .todo-form > input {
   width: 100%;
   background-color: inherit;
-}
-
-.todo-item {
-  opacity: 1;
-  transition: opacity 200ms ease-out;
-}
-
-.todo-item.fade-start {
-  opacity: 0;
 }
 
 .todo-form > button {
