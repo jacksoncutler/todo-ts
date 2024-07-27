@@ -13,7 +13,8 @@ const createTodoItem = (id: string, text: string) => {
   todoItem.appendChild(deleteButton);
 
   todoItem.dataset.id = id;
-  todoItem.className = 'todo-item';
+  todoItem.classList.add('todo-item');
+  todoItem.classList.add('list-item');
   checkbox.type = 'checkbox';
   checkbox.checked = loadTodo(id)?.completed || false;
   todoText.innerHTML = text;

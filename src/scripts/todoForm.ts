@@ -1,6 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
 import createTodoItem from './todoItem';
-import createNewTodoBtn from './newTodoBtn';
 import { newTodo, editTodo } from './util/storage';
 
 const createTodoForm = (id = '', currentText = '') => {
@@ -11,7 +10,8 @@ const createTodoForm = (id = '', currentText = '') => {
   todoForm.appendChild(todoSubmitBtn);
 
   todoForm.id = 'todo-form';
-  todoForm.className = 'todo-form';
+  todoForm.classList.add('todo-form');
+  todoForm.classList.add('list-item');
   todoInput.id = 'todo-input';
   todoInput.value = currentText;
   todoSubmitBtn.type = 'submit';
