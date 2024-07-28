@@ -104,3 +104,7 @@ main {
 #completed-list .todo-item > p {
   text-decoration: line-through;
 }
+
+#completed-list .todo-item .edit-button {
+  display: none;
+}

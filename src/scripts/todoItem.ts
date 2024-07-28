@@ -18,6 +18,7 @@ const createTodoItem = (id: string, text: string) => {
   checkbox.type = 'checkbox';
   checkbox.checked = loadTodo(id)?.completed || false;
   todoText.innerHTML = text;
+  editButton.classList.add('edit-button');
   editButton.innerHTML = 'Edit';
   deleteButton.innerHTML = 'Delete';
 
