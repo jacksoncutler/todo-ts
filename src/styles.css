@@ -67,12 +67,8 @@ main {
   opacity: 0;
 }
 
-.todo-item,
-.todo-form {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 0.5rem;
+.list-item > button {
+  flex-shrink: 0;
 }
 
 .todo-item > p,
@@ -81,6 +77,30 @@ main {
   background-color: inherit;
 }
 
-.todo-form > button {
-  flex-shrink: 0;
+.todo-item:hover {
+  background-color: lightgrey;
+}
+
+.todo-item > p {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.todo-item > input[type=checkbox] {
+  display: none;
+}
+
+#todo-list .todo-item > p::before {
+  content: url('assets/checkbox-unchecked.svg');
+  display: block;
+}
+
+#completed-list .todo-item > p::before {
+  content: url('assets/checkbox-checked.svg');
+  display: block;
+}
+
+#completed-list .todo-item > p {
+  text-decoration: line-through;
 }

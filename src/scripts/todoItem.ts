@@ -21,7 +21,12 @@ const createTodoItem = (id: string, text: string) => {
   editButton.innerHTML = 'Edit';
   deleteButton.innerHTML = 'Delete';
 
-  checkbox.addEventListener('change', () => {
+  todoItem.addEventListener('click', (event) => {
+    const targetNode = event.target as HTMLElement;
+    if (targetNode.nodeName === 'BUTTON') return;
+
+    checkbox.checked = !checkbox.checked;
+
     const todoList = document.querySelector<HTMLUListElement>('#todo-list');
     const completedList =
       document.querySelector<HTMLUListElement>('#completed-list');
@@ -33,7 +38,7 @@ const createTodoItem = (id: string, text: string) => {
       todoItem.classList.add('hide');
       setTimeout(() => {
         todoItem.classList.remove('hide');
-      }, 50);
+      }, 100);
     } else {
       completedList.removeChild(todoItem);
       todoList.appendChild(todoItem);
