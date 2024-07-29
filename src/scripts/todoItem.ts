@@ -19,8 +19,7 @@ const createTodoItem = (id: string, text: string) => {
   checkbox.checked = loadTodo(id)?.completed || false;
   todoText.innerHTML = text;
   editButton.classList.add('edit-button');
-  editButton.innerHTML = 'Edit';
-  deleteButton.innerHTML = 'Delete';
+  deleteButton.classList.add('delete-button');
 
   todoItem.addEventListener('click', (event) => {
     const targetNode = event.target as HTMLElement;

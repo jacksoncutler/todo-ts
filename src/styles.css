@@ -41,6 +41,16 @@ main {
   }
 }
 
+button {
+  border: none;
+  background-color: inherit;
+}
+
+button:hover {
+  background-color: inherit;
+  cursor: pointer;
+}
+
 .container {
   margin-block: 2rem;
   display: flex;
@@ -60,6 +70,10 @@ main {
   display: flex;
   gap: 0.25rem;
   align-items: center;
+}
+
+#new-todo > button:hover {
+  cursor: pointer;
 }
 
 #new-todo > button::before {
@@ -86,17 +100,17 @@ main {
   flex-shrink: 0;
 }
 
+.todo-item:hover,
+#new-todo > button:hover {
+  background-color: lightgrey;
+}
+
 .todo-item > p,
 .todo-form > input {
   width: 100%;
   background-color: inherit;
 }
 
-.todo-item:hover,
-#new-todo > button:hover {
-  background-color: lightgrey;
-  cursor: pointer;
-}
 
 .todo-item > p {
   display: flex;
@@ -122,4 +136,12 @@ main {
 
 #completed-list .edit-button {
   display: none;
+}
+
+.edit-button::before {
+  content: url('assets/edit.svg');
+}
+
+.delete-button::before {
+  content: url('assets/delete.svg');
 }
