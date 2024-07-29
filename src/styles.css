@@ -32,6 +32,7 @@ body {
 main {
   height: 100%;
   padding: 2rem;
+  overflow: auto;
 }
 
 @media (min-width: 600px) {
@@ -49,6 +50,20 @@ main {
 
 .container > button {
   width: max-content;
+}
+
+#new-todo > button {
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #ebebeb;
+  padding: 0.5rem;
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+#new-todo > button::before {
+  content: url('assets/plus.svg');
 }
 
 .list-item {
@@ -77,8 +92,10 @@ main {
   background-color: inherit;
 }
 
-.todo-item:hover {
+.todo-item:hover,
+#new-todo > button:hover {
   background-color: lightgrey;
+  cursor: pointer;
 }
 
 .todo-item > p {
@@ -87,24 +104,22 @@ main {
   align-items: center;
 }
 
-.todo-item > input[type=checkbox] {
+.todo-item > input[type='checkbox'] {
   display: none;
 }
 
 #todo-list .todo-item > p::before {
   content: url('assets/checkbox-unchecked.svg');
-  display: block;
 }
 
 #completed-list .todo-item > p::before {
   content: url('assets/checkbox-checked.svg');
-  display: block;
 }
 
 #completed-list .todo-item > p {
   text-decoration: line-through;
 }
 
-#completed-list .todo-item .edit-button {
+#completed-list .edit-button {
   display: none;
 }
