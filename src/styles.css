@@ -62,7 +62,14 @@ button:hover {
   width: max-content;
 }
 
-#new-todo > button {
+.toolbar {
+  margin-block: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.toolbar > button {
   border: none;
   border-radius: 0.5rem;
   background-color: #ebebeb;
@@ -72,11 +79,11 @@ button:hover {
   align-items: center;
 }
 
-#new-todo > button:hover {
+.toolbar > button:hover {
   cursor: pointer;
 }
 
-#new-todo > button::before {
+.toolbar > button::before {
   content: url('assets/plus.svg');
 }
 
@@ -101,7 +108,7 @@ button:hover {
 }
 
 .todo-item:hover,
-#new-todo > button:hover {
+.toolbar > button:hover {
   background-color: lightgrey;
 }
 

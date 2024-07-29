@@ -13,7 +13,8 @@ const createNewTodoBtn = () => {
 
     todoForm.classList.add('hide');
     todoList.appendChild(todoForm);
-    const todoInput = todoForm.childNodes[0] as HTMLInputElement;
+    const todoInput = todoForm.querySelector<HTMLInputElement>('#todo-input');
+    if (!todoInput) return;
     todoInput.focus();
     setTimeout(() => {
       todoForm.classList.remove('hide');
