@@ -14,8 +14,9 @@ const createTodoForm = (id = '', currentText = '') => {
   todoForm.classList.add('list-item');
   todoInput.id = 'todo-input';
   todoInput.value = currentText;
+  todoSubmitBtn.classList.add('save-button');
   todoSubmitBtn.type = 'submit';
-  todoSubmitBtn.innerHTML = 'Save Task';
+  todoSubmitBtn.innerHTML = '';
 
   todoForm.addEventListener('submit', (event) => {
     event.preventDefault();

@@ -47,7 +47,6 @@ button {
 }
 
 button:hover {
-  background-color: inherit;
   cursor: pointer;
 }
 
@@ -118,7 +117,6 @@ button:hover {
   background-color: inherit;
 }
 
-
 .todo-item > p {
   display: flex;
   gap: 0.5rem;
@@ -151,4 +149,8 @@ button:hover {
 
 .delete-button::before {
   content: url('assets/delete.svg');
+}
+
+.save-button::before {
+  content: url('assets/save.svg');
 }
