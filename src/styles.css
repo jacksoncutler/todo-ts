@@ -140,8 +140,12 @@ button:hover {
   content: url('assets/checkbox-unchecked.svg');
 }
 
-#completed-list .todo-item > p::before {
+#todo-list .todo-item:hover > p::before {
   content: url('assets/checkbox-checked.svg');
+}
+
+#completed-list .todo-item > p::before {
+  content: url('assets/checkbox-checked-dark.svg');
 }
 
 #completed-list .todo-item > p {
