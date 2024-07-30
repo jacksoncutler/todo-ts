@@ -3,6 +3,11 @@ html {
   -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
+
+  --color-primary: #ffffff;
+  --color-secondary-1: #ebebeb;
+  --color-secondary-2: #dcdcdc;
+  --color-text: #000000;
 }
 
 *,
@@ -21,18 +26,22 @@ ol {
 input,
 button,
 textarea,
-select {
+select,
+button {
   font: inherit;
+  color: inherit;
 }
 
 body {
   height: 100vh;
+  color: var(--color-text);
 }
 
 main {
   height: 100%;
   padding: 2rem;
   overflow: auto;
+  background-color: var(--color-primary);
 }
 
 @media (min-width: 600px) {
@@ -71,7 +80,7 @@ button:hover {
 .toolbar > button {
   border: none;
   border-radius: 0.5rem;
-  background-color: #ebebeb;
+  background-color: var(--color-secondary-1);
   padding: 0.5rem;
   display: flex;
   gap: 0.25rem;
@@ -88,7 +97,7 @@ button:hover {
 
 .list-item {
   border-radius: 0.5rem;
-  background-color: #ebebeb;
+  background-color: var(--color-secondary-1);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -108,7 +117,7 @@ button:hover {
 
 .todo-item:hover,
 .toolbar > button:hover {
-  background-color: lightgrey;
+  background-color: var(--color-secondary-2);
 }
 
 .todo-item > p,
