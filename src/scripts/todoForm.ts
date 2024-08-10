@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import createTodoItem from './todoItem';
-import { newTodo, editTodo } from './util/storage';
+import { newTodo, editTodo, deleteTodo } from './util/storage';
 
 const createTodoForm = (id = '', currentText = '') => {
   const todoForm = document.createElement('form');
@@ -14,32 +14,37 @@ const createTodoForm = (id = '', currentText = '') => {
   todoForm.classList.add('list-item');
   todoInput.id = 'todo-input';
   todoInput.value = currentText;
+  todoSubmitBtn.id = 'todo-submit';
   todoSubmitBtn.classList.add('save-button');
   todoSubmitBtn.type = 'submit';
   todoSubmitBtn.innerHTML = '';
 
   todoForm.addEventListener('submit', (event) => {
     event.preventDefault();
+    window.removeEventListener('mousedown', handleOutsideClick);
 
     if (!id) {
-      newItemEvent(todoForm, todoInput);
+      newItemSave(todoForm, todoInput);
     } else {
-      editItemEvent(id, todoForm, todoInput);
+      editItemSave(id, todoForm, todoInput);
     }
   });
+
+  setTimeout(() => {
+    window.addEventListener('mousedown', handleOutsideClick);
+  }, 1);
 
   return todoForm;
 
   // HELPERS
 
-  function newItemEvent(
-    todoForm: HTMLFormElement,
-    todoInput: HTMLInputElement
-  ) {
+  function newItemSave(todoForm: HTMLFormElement, todoInput: HTMLInputElement) {
     const todoList = todoForm.parentElement as HTMLUListElement;
     const text = todoInput.value;
-    if (!text) return;
-
+    if (!text) {
+      discardItem(todoList, todoForm);
+      return;
+    }
     const id = uuidv4();
     const todoItem = createTodoItem(id, text);
     todoList.replaceChild(todoItem, todoForm);
@@ -49,21 +54,40 @@ const createTodoForm = (id = '', currentText = '') => {
       text: text,
       completed: false,
     });
+    return;
   }
 
-  function editItemEvent(
+  function editItemSave(
     id: string,
     todoForm: HTMLFormElement,
     todoInput: HTMLInputElement
   ) {
     const todoList = todoForm.parentElement as HTMLUListElement;
     const text = todoInput.value;
-    if (!text) return;
-
+    if (!text) {
+      discardItem(todoList, todoForm);
+      deleteTodo(id);
+      return;
+    }
     const todoItem = createTodoItem(id, text);
     todoList.replaceChild(todoItem, todoForm);
 
     editTodo(id, text);
+    return;
+  }
+
+  function discardItem(todoList: HTMLUListElement, todoForm: HTMLFormElement) {
+    todoForm.classList.add('hide');
+    setTimeout(() => {
+      todoList.removeChild(todoForm);
+    }, 250);
+  }
+
+  function handleOutsideClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    if (target.id !== 'todo-input' && target.id !== 'todo-submit') {
+      todoForm.requestSubmit();
+    }
   }
 };
 
