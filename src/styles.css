@@ -4,9 +4,16 @@ html {
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
 
+  --font-size-heading-1: 1.75em;
+  --font-size-heading-2: 1.25em;
+  --font-size-body: 0.875em;
+
+  --block-spacing: 1.5rem;
+
   --color-primary: #ffffff;
   --color-secondary-1: #ebebeb;
   --color-secondary-2: #dcdcdc;
+  --color-accent: rgb(0, 110, 255);
   --color-text: #000000;
 }
 
@@ -39,15 +46,34 @@ body {
 
 main {
   height: 100%;
-  padding: 2rem;
+  padding: 1.5rem;
   overflow: auto;
   background-color: var(--color-primary);
 }
 
-@media (min-width: 600px) {
-  main {
-    padding-inline: calc(20% - 3rem);
-  }
+h1,
+h2 {
+  display: flex;
+  width: max-content;
+  border-inline-start: 5px solid var(--color-accent);
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+}
+
+h1 {
+  font-size: var(--font-size-heading-1);
+}
+
+h2 {
+  font-size: var(--font-size-heading-2);
+}
+
+p, input, button {
+  font-size: var(--font-size-body);
+}
+
+input {
+  border: 0;
 }
 
 button {
@@ -60,7 +86,7 @@ button:hover {
 }
 
 .container {
-  margin-block: 2rem;
+  margin-block: var(--block-spacing);
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -71,7 +97,7 @@ button:hover {
 }
 
 .toolbar {
-  margin-block: 2rem;
+  margin-block: var(--block-spacing);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -82,9 +108,11 @@ button:hover {
   border-radius: 0.5rem;
   background-color: var(--color-secondary-1);
   padding: 0.5rem;
+  flex-grow: 1;
   display: flex;
   gap: 0.25rem;
   align-items: center;
+  justify-content: center;
 }
 
 .toolbar > button:hover {
@@ -166,4 +194,24 @@ button:hover {
 
 .save-button::before {
   content: url('assets/save.svg');
+}
+
+@media (min-width: 450px) {
+  .toolbar > button {
+    flex-grow: 0;
+  }
+}
+
+@media (min-width: 750px) {
+  html {
+    --font-size-heading-1: 2em;
+    --font-size-heading-2: 1.5em;
+    --font-size-body: 1em;
+
+    --block-spacing: 2rem;
+  }
+
+  main {
+    padding-inline: calc(20% - 3rem);
+  }
 }
