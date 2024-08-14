@@ -41,7 +41,7 @@ const createTodoItem = (id: string, text: string) => {
       }, 100);
     } else {
       completedList.removeChild(todoItem);
-      todoList.appendChild(todoItem);
+      todoList.insertBefore(todoItem, todoList.firstChild);
       todoItem.classList.add('hide');
       setTimeout(() => {
         todoItem.classList.remove('hide');

@@ -46,7 +46,7 @@ body {
 
 main {
   height: 100%;
-  padding: 1.5rem;
+  padding: var(--block-spacing);
   overflow: auto;
   background-color: var(--color-primary);
 }

@@ -15,7 +15,7 @@ function loadTodo(id: string) {
 
 function newTodo(todo: Todo) {
   const todos = loadTodos();
-  todos.push(todo);
+  todos.unshift(todo);
   localStorage.setItem('todos', JSON.stringify(todos));
 }
 
