@@ -19,7 +19,10 @@ const createTodoItem = (id: string, text: string) => {
   checkbox.checked = loadTodo(id)?.completed || false;
   todoText.innerHTML = text;
   editButton.classList.add('edit-button');
+  editButton.title = 'Edit';
   deleteButton.classList.add('delete-button');
+  deleteButton.title = 'Delete';
+  todoItem.title = checkbox.checked ? 'Uncheck task' : 'Check task';
 
   todoItem.addEventListener('click', (event) => {
     const targetNode = event.target as HTMLElement;
@@ -35,6 +38,7 @@ const createTodoItem = (id: string, text: string) => {
     if (checkbox.checked) {
       todoList.removeChild(todoItem);
       completedList.appendChild(todoItem);
+      todoItem.title = 'Uncheck task';
       todoItem.classList.add('hide');
       setTimeout(() => {
         todoItem.classList.remove('hide');
@@ -42,6 +46,7 @@ const createTodoItem = (id: string, text: string) => {
     } else {
       completedList.removeChild(todoItem);
       todoList.insertBefore(todoItem, todoList.firstChild);
+      todoItem.title = 'Check task';
       todoItem.classList.add('hide');
       setTimeout(() => {
         todoItem.classList.remove('hide');

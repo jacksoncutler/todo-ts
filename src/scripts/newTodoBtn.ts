@@ -4,6 +4,7 @@ const createNewTodoBtn = () => {
   const newTodoBtn = document.createElement('button');
 
   newTodoBtn.id = 'new-todo-btn';
+  newTodoBtn.title = 'Create task';
   newTodoBtn.innerHTML = 'New Task';
 
   newTodoBtn.addEventListener('click', () => {

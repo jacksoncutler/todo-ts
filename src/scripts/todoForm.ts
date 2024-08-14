@@ -15,6 +15,7 @@ const createTodoForm = (id = '', currentText = '') => {
   todoInput.id = 'todo-input';
   todoInput.value = currentText;
   todoSubmitBtn.id = 'todo-submit';
+  todoSubmitBtn.title = 'Save';
   todoSubmitBtn.classList.add('save-button');
   todoSubmitBtn.type = 'submit';
   todoSubmitBtn.innerHTML = '';
