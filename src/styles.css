@@ -119,8 +119,8 @@ button:hover {
   cursor: pointer;
 }
 
-.toolbar > button::before {
-  content: url('assets/plus.svg');
+.message {
+  font-weight: 300;
 }
 
 .list-item {
@@ -164,6 +164,18 @@ button:hover {
   display: none;
 }
 
+#completed-list .todo-item > p {
+  text-decoration: line-through;
+}
+
+#completed-list .edit-button {
+  display: none;
+}
+
+.toolbar > button::before {
+  content: url('assets/plus.svg');
+}
+
 #todo-list .todo-item > p::before {
   content: url('assets/checkbox-unchecked.svg');
 }
@@ -174,14 +186,6 @@ button:hover {
 
 #completed-list .todo-item > p::before {
   content: url('assets/checkbox-checked-dark.svg');
-}
-
-#completed-list .todo-item > p {
-  text-decoration: line-through;
-}
-
-#completed-list .edit-button {
-  display: none;
 }
 
 .edit-button::before {
