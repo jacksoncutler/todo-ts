@@ -1,8 +1,16 @@
-const createEmptyListMessage = (id: string, text: string) => {
+const createEmptyListMessage = (listId: string) => {
   const message = document.createElement('p');
-  message.id = id;
   message.classList.add('message');
-  message.innerHTML = text;
+  switch (listId) {
+    case 'todo-list':
+      message.id = 'empty-todo-list';
+      message.innerHTML = 'No tasks in progress';
+      break;
+    case 'completed-list':
+      message.id = 'empty-completed-list';
+      message.innerHTML = 'No tasks completed';
+      break;
+  }
   return message;
 };
 
