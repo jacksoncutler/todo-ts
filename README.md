@@ -4,7 +4,9 @@
 
 A clean and simple to-do app built using vanilla TypeScript. To-do's are saved to browser's localstorage for basic data permanence.
 
-Live demo can be found [here](https://todo-ts-3dd16.web.app)
+<img src="https://raw.githubusercontent.com/jacksoncutler/jacksoncutler/refs/heads/main/assets/images/screenshot-todo-site.jpg" style="width: 400px;">
+
+Live demo can be found [here](https://todo-ts-3dd16.web.app).
 
 ## Quick Start
 
