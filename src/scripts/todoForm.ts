@@ -41,7 +41,7 @@ const createTodoForm = (id = '', currentText = '') => {
 
   function newItemSave(todoForm: HTMLFormElement, todoInput: HTMLInputElement) {
     const todoList = todoForm.parentElement as HTMLUListElement;
-    const text = todoInput.value;
+    const text = todoInput.value.trim();
     if (!text) {
       discardItem(todoList, todoForm);
       return;
@@ -64,7 +64,7 @@ const createTodoForm = (id = '', currentText = '') => {
     todoInput: HTMLInputElement
   ) {
     const todoList = todoForm.parentElement as HTMLUListElement;
-    const text = todoInput.value;
+    const text = todoInput.value.trim();
     if (!text) {
       discardItem(todoList, todoForm);
       deleteTodo(id);
