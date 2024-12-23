@@ -8,9 +8,9 @@ Live demo can be found [here](https://todo-ts-3dd16.web.app)
 
 ## Quick Start
 
-Clone repo and navigate into root.
+Clone repo and navigate into root directory.
 
-### Instal Dependencies
+### Install Dependencies
 
 `yarn install`
 
